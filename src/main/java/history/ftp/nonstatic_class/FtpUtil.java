@@ -1,4 +1,4 @@
-package History.FTP.nonstatic_class;
+package history.ftp.nonstatic_class;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -32,7 +32,7 @@ public class FtpUtil {
     }
 
     /**
-     * Connects to FTP server.
+     * Connects to ftp server.
      *
      * @throws IOException
      *             on I/O errors
@@ -42,7 +42,7 @@ public class FtpUtil {
         try {
             ftp.connect(host, port);
         } catch (UnknownHostException ex) {
-            throw new IOException("Can't find FTP server '" + host + "'");
+            throw new IOException("Can't find ftp server '" + host + "'");
         }
 
         // Check rsponse after connection attempt.
@@ -78,7 +78,7 @@ public class FtpUtil {
 
 
     /**
-     * Uploads the file to the FTP server.
+     * Uploads the file to the ftp server.
      *
      * @param ftpFileName
      *            server file name (with absolute path)
@@ -102,7 +102,7 @@ public class FtpUtil {
 
             in = new BufferedInputStream(new FileInputStream(localFile));
             if (!ftp.storeFile(ftpFileName, in)) {
-                throw new IOException("Can't upload file '" + ftpFileName + "' to FTP server. Check FTP permissions and path.");
+                throw new IOException("Can't upload file '" + ftpFileName + "' to ftp server. Check ftp permissions and path.");
             }
 
         } finally {
@@ -114,7 +114,7 @@ public class FtpUtil {
     }
 
     /**
-     * Downloads the file from the FTP server.
+     * Downloads the file from the ftp server.
      *
      * @param ftpFileName
      *            server file name (with absolute path)
@@ -133,7 +133,7 @@ public class FtpUtil {
             // Get file info.
             FTPFile[] fileInfoArray = ftp.listFiles(ftpFileName);
             if (fileInfoArray == null) {
-                throw new FileNotFoundException("File " + ftpFileName + " was not found on FTP server.");
+                throw new FileNotFoundException("File " + ftpFileName + " was not found on ftp server.");
             }
 
             // Check file size.
@@ -146,7 +146,7 @@ public class FtpUtil {
             // Download file.
             out = new BufferedOutputStream(new FileOutputStream(localFile));
             if (!ftp.retrieveFile(ftpFileName, out)) {
-                throw new IOException("Error loading file " + ftpFileName + " from FTP server. Check FTP permissions and path.");
+                throw new IOException("Error loading file " + ftpFileName + " from ftp server. Check ftp permissions and path.");
             }
 
             out.flush();
@@ -173,7 +173,7 @@ public class FtpUtil {
             // Download file.
             out = new BufferedOutputStream(new FileOutputStream(localFile));
             if (!ftp.retrieveFile(ftpFileName, out)) {
-                throw new IOException("Error loading file " + ftpFileName + " from FTP server. Check FTP permissions and path.");
+                throw new IOException("Error loading file " + ftpFileName + " from ftp server. Check ftp permissions and path.");
             }
             out.flush();
         } finally {
@@ -189,7 +189,7 @@ public class FtpUtil {
 
 
     /**
-     * Removes the file from the FTP server.
+     * Removes the file from the ftp server.
      *
      * @param ftpFileName
      *            server file name (with absolute path)
@@ -198,12 +198,12 @@ public class FtpUtil {
      */
     public void remove(String ftpFileName) throws IOException {
         if (!ftp.deleteFile(ftpFileName)) {
-            throw new IOException("Can't remove file '" + ftpFileName + "' from FTP server.");
+            throw new IOException("Can't remove file '" + ftpFileName + "' from ftp server.");
         }
     }
 
     /**
-     * Lists the files in the given FTP directory.
+     * Lists the files in the given ftp directory.
      *
      * @param filePath
      *            absolute path on the server
@@ -230,7 +230,7 @@ public class FtpUtil {
     }
 
     /**
-     * Sends an FTP Server site specific command
+     * Sends an ftp Server site specific command
      *
      * @param args
      *            site command arguments
@@ -247,7 +247,7 @@ public class FtpUtil {
     }
 
     /**
-     * Disconnects from the FTP server
+     * Disconnects from the ftp server
      *
      * @throws IOException
      *             on I/O errors
@@ -266,7 +266,7 @@ public class FtpUtil {
 
 
     /**
-     * check file is exist from the FTP server
+     * check file is exist from the ftp server
      *
      * @throws IOException
      *             on I/O errors
@@ -285,14 +285,14 @@ public class FtpUtil {
 
 
     /**
-     * Makes the full name of the file on the FTP server by joining its path and
+     * Makes the full name of the file on the ftp server by joining its path and
      * the local file name.
      *
      * @param ftpPath
      *            file path on the server
      * @param localFile
      *            local file
-     * @return full name of the file on the FTP server
+     * @return full name of the file on the ftp server
      */
     public String makeFTPFileName(String ftpPath, File localFile) {
         if (ftpPath == "") {
@@ -435,7 +435,7 @@ public class FtpUtil {
             // Get file info.
             FTPFile[] fileInfoArray = ftp.listFiles(ftpFileName);
             if (fileInfoArray == null) {
-                throw new FileNotFoundException("File '" + ftpFileName + "' was not found on FTP server.");
+                throw new FileNotFoundException("File '" + ftpFileName + "' was not found on ftp server.");
             }
 
             // Check file size.
@@ -447,7 +447,7 @@ public class FtpUtil {
 
             // Download file.
             if (!ftp.retrieveFile(ftpFileName, out)) {
-                throw new IOException("Error loading file '" + ftpFileName + "' from FTP server. Check FTP permissions and path.");
+                throw new IOException("Error loading file '" + ftpFileName + "' from ftp server. Check ftp permissions and path.");
             }
 
             out.flush();
@@ -477,7 +477,7 @@ public class FtpUtil {
             ftp.enterLocalPassiveMode();
 
             if (!ftp.storeFile(ftpFileName, in)) {
-                throw new IOException("Can't upload file '" + ftpFileName + "' to FTP server. Check FTP permissions and path.");
+                throw new IOException("Can't upload file '" + ftpFileName + "' to ftp server. Check ftp permissions and path.");
             }
         } finally {
             try {
@@ -489,7 +489,7 @@ public class FtpUtil {
 
 
     /**
-     * Lists the files in the given FTP directory filter by time.
+     * Lists the files in the given ftp directory filter by time.
      *
      * @param filePath
      *            absolute path on the server

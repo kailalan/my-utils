@@ -1,4 +1,4 @@
-package History.FTP.static_class;
+package history.ftp.static_class;
 
 import java.io.*;
 import java.net.SocketException;
@@ -66,7 +66,7 @@ public class FtpUtil {
      * @date 2016-7-16 上午09:47:57
      */
     public static String encodeBase64String(byte[] bytes){
-        logger.debug("【History.FTP.FtpUtil】byte[]转Base64String");
+        logger.debug("【history.ftp.FtpUtil】byte[]转Base64String");
         return Base64.encodeBase64String(bytes);
     }
 
@@ -78,7 +78,7 @@ public class FtpUtil {
      * @date 2016-7-16 上午09:49:25
      */
     public static byte[] encodeBase64String(String base64String){
-        logger.debug("【History.FTP.FtpUtil】base64String 转byte[]");
+        logger.debug("【history.ftp.FtpUtil】base64String 转byte[]");
         return Base64.decodeBase64(base64String);
     }
 
@@ -90,7 +90,7 @@ public class FtpUtil {
      * @date 2016-7-16 上午09:53:30
      */
     public static byte[] encodeBase64(byte[] binaryData){
-        logger.debug("【History.FTP.FtpUtil】byte[]转base64Byte[]");
+        logger.debug("【history.ftp.FtpUtil】byte[]转base64Byte[]");
         return Base64.encodeBase64(binaryData);
     }
 
@@ -105,7 +105,7 @@ public class FtpUtil {
      * @date 2016-7-16 上午10:12:22
      */
     public static boolean connection() throws NumberFormatException, SocketException, IOException{
-        logger.debug("【History.FTP.FtpUtil】-开始建立ftp连接对象");
+        logger.debug("【history.ftp.FtpUtil】-开始建立ftp连接对象");
         //建立ftp连接
         ftpClient.connect(hostname, Integer.valueOf(port));
         ftpClient.setAutodetectUTF8(true);
@@ -122,7 +122,7 @@ public class FtpUtil {
      * @date 2016-7-16 上午10:15:01
      */
     public static boolean isConnected(){
-        logger.debug("【History.FTP.FtpUtil】-ftp连接是否已经打开"+ftpClient.isConnected());
+        logger.debug("【history.ftp.FtpUtil】-ftp连接是否已经打开"+ftpClient.isConnected());
         return ftpClient.isConnected();
     }
 
@@ -135,7 +135,7 @@ public class FtpUtil {
      * @date 2016-7-16 上午10:15:01
      */
     public static boolean isExisted (String remote) throws NumberFormatException, SocketException, IOException{
-        logger.debug("【History.FTP.FtpUtil】-检测ftp上是否有该文件");
+        logger.debug("【history.ftp.FtpUtil】-检测ftp上是否有该文件");
         InputStream inputStream = ftpClient.retrieveFileStream(remote);
         if(inputStream == null || ftpClient.getReplyCode() == FTPReply.FILE_UNAVAILABLE){
             return false;
@@ -154,7 +154,7 @@ public class FtpUtil {
      * @date 2016-7-16 上午10:19:14
      */
     public static OutputStream getFtpFileOutputStream(String remote) throws IOException{
-        logger.debug("【History.FTP.FtpUtil】-根据文件URL获取OutputStream");
+        logger.debug("【history.ftp.FtpUtil】-根据文件URL获取OutputStream");
         return ftpClient.storeFileStream(remote);
     }
     /**
@@ -166,7 +166,7 @@ public class FtpUtil {
      * @date 2016-7-16 上午10:19:14
      */
     public static InputStream getFtpFileInputStream(String remote) throws IOException{
-        logger.debug("【History.FTP.FtpUtil】-根据文件URL获取InputStream");
+        logger.debug("【history.ftp.FtpUtil】-根据文件URL获取InputStream");
         return ftpClient.retrieveFileStream(remote);
     }
 
@@ -179,7 +179,7 @@ public class FtpUtil {
      * @date 2016-7-16 上午10:19:14
      */
     public static void getFtpFile(String remote,String filePath) throws IOException{
-        logger.debug("【History.FTP.FtpUtil】-根据文件URL获取InputStream");
+        logger.debug("【history.ftp.FtpUtil】-根据文件URL获取InputStream");
 
         File localFile = new File(filePath);
         OutputStream os = new FileOutputStream(localFile);
@@ -196,7 +196,7 @@ public class FtpUtil {
      * @date 2016-7-16 上午10:22:50
      */
     public static byte[] getInputStreamToByte(InputStream inputStream) throws IOException{
-        logger.debug("【History.FTP.FtpUtil】-InputStream 转byte[]");
+        logger.debug("【history.ftp.FtpUtil】-InputStream 转byte[]");
         return IOUtils.toByteArray(inputStream);
     }
 
@@ -210,7 +210,7 @@ public class FtpUtil {
      * @date 2016-7-16 上午10:22:50
      */
     public static byte[] getOutputStreamToByte(OutputStream outputStream) throws IOException{
-        logger.debug("【History.FTP.FtpUtil】-OutputStream 转byte[]");
+        logger.debug("【history.ftp.FtpUtil】-OutputStream 转byte[]");
         ByteArrayOutputStream byteArrayOutputStream=(ByteArrayOutputStream)outputStream;
         return byteArrayOutputStream.toByteArray();
     }
@@ -224,7 +224,7 @@ public class FtpUtil {
      * @date 2016-7-17 下午01:18:51
      */
     public static boolean storeFile(String remote, InputStream local) throws IOException{
-        logger.debug("【History.FTP.FtpUtil】-文件上传");
+        logger.debug("【history.ftp.FtpUtil】-文件上传");
         return ftpClient.storeFile(remote, local);
     }
     /**
@@ -237,7 +237,7 @@ public class FtpUtil {
      * @date 2016-7-17 下午01:18:51
      */
     public static boolean storeUniqueFile(String remote, InputStream local) throws IOException{
-        logger.debug("【History.FTP.FtpUtil】-文件唯一性上传");
+        logger.debug("【history.ftp.FtpUtil】-文件唯一性上传");
         return ftpClient.storeUniqueFile(remote, local);
     }
     /**
@@ -248,7 +248,7 @@ public class FtpUtil {
      * @date 2016-7-16 上午10:30:50
      */
     public static boolean logout() throws IOException{
-        logger.debug("【History.FTP.FtpUtil】-关闭ftp");
+        logger.debug("【history.ftp.FtpUtil】-关闭ftp");
         return ftpClient.logout();
     }
 

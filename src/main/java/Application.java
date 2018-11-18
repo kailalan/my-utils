@@ -1,10 +1,8 @@
 
-import History.FTP.nonstatic_class.FtpUtil;
+import history.ftp.nonstatic_class.FtpUtil;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.SocketException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;

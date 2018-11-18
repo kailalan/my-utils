@@ -1,4 +1,4 @@
-package History.FTP.nonstatic_class;
+package history.ftp.nonstatic_class;
 
 import java.util.Calendar;
 
